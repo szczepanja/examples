@@ -1,20 +1,20 @@
 import scala.io.Source
 
-object Main extends App {
+object WC extends App {
   def filePath: Seq[String] = Source.fromFile("C://Users//a.szczepanik//Projekty//WC//src//main//scala//Text.txt").getLines.toSeq
 
-  def countLines(): Unit = println(filePath.length)
+  def size(): Int = filePath.size
 
-  def getElements(): Unit = {
-    (0 until 1).map(_ => filePath).map(_.size).foreach(println)
+  def getElements: Int = {
+    filePath.flatMap(line => line.split("")).count(_.nonEmpty)
   }
+//  filePath.map(_.length).sum - sprawdzam długość każdego z elementów, a potem sumuje
 
   def countWords(w: Seq[String]): Set[(String, Int)] = {
     w.toSet.map((word: String) => (word, w.count(_ == word)))
   }
 
-  countLines()
-  getElements()
+  println(size())
+  println(getElements)
   println(countWords(filePath).size)
 }
-
