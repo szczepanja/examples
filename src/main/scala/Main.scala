@@ -3,9 +3,7 @@ import scala.io.Source
 object Main extends App {
   def filePath: Seq[String] = Source.fromFile("C://Users//a.szczepanik//Projekty//WC//src//main//scala//Text.txt").getLines.toSeq
 
-  def size(): Int = filePath.size
-
-  size()
+  def countLines(): Unit = println(filePath.length)
 
   def getElements(): Unit = {
     (0 until 1).map(_ => filePath).map(_.size).foreach(println)
@@ -15,7 +13,7 @@ object Main extends App {
     w.toSet.map((word: String) => (word, w.count(_ == word)))
   }
 
-
+  countLines()
   getElements()
   println(countWords(filePath).size)
 }
